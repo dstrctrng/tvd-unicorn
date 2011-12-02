@@ -16,3 +16,6 @@ git remote -v
 
 gem/setup
 vi $tvd_name.gemspec
+git add *.gemspec
+git commit -m "initial tvdinner: $tvd_name"
+git push -u origin master
