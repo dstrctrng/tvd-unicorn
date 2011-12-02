@@ -1,0 +1,15 @@
+Gem::Specification.new do |s|
+  s.name = 'TODO'
+  s.summary = "TODO"
+  s.description = s.summary
+  s.author = "TODO"
+  s.email = "TODO"
+  s.homepage = "TODO"
+
+  s.version = '0.0.1'
+
+  s.platform = Gem::Platform::RUBY
+
+  s.add_dependency "tvdinner"
+end
+
