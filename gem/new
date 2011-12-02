@@ -18,4 +18,5 @@ gem/setup
 vi $tvd_name.gemspec
 git add *.gemspec
 git commit -m "initial tvdinner: $tvd_name"
+bundle exec hub create -d "tvdinner: $tvd_name" -h "https://github.com/:$(git config github.user)/$tvd_name"
 git push -u origin master
