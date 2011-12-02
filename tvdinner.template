@@ -1,15 +1,19 @@
 Gem::Specification.new do |s|
-  s.name = 'TODO'
-  s.summary = "TODO"
+  s.name = '%%%NAME%%%'
+  s.summary = "%%%SUMMARY%%%"
   s.description = s.summary
-  s.author = "TODO"
-  s.email = "TODO"
-  s.homepage = "TODO"
+  s.author = "%%%AUTHOR%%%"
+  s.email = "%%%EMAIL%%%"
+  s.homepage = "%%%HOMEPAGE%%%"
 
   s.version = '0.0.1'
 
   s.platform = Gem::Platform::RUBY
 
   s.add_dependency "microwave"
+
+  s.require_path = "cookbooks"
+
+  s.files = Dir.glob("cookbooks/**/*")
 end
 
