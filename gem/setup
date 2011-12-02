@@ -14,6 +14,3 @@ perl -pe 's{___SUMMARY___} { "tvdinner: $ENV{'tvd_name'}" }e' -i $gemspec
 perl -pe 's{___AUTHOR___}  { $ENV{"user_name"} }e' -i $gemspec
 perl -pe 's{___EMAIL___}   { $ENV{"user_email"} }e' -i $gemspec
 perl -pe 's{___HOMEPAGE___}{ "https://github.com/$ENV{'github_user'}/$ENV{'tvd_name'}" }e' -i $gemspec
-
-vi $gemspec
-
