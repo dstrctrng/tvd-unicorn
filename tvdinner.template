@@ -10,6 +10,6 @@ Gem::Specification.new do |s|
 
   s.platform = Gem::Platform::RUBY
 
-  s.add_dependency "tvdinner"
+  s.add_dependency "microwave"
 end
 
