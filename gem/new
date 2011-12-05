@@ -4,9 +4,9 @@ tvd_name=$1; shift
 
 tvd_origin="$(git remote -v | grep ^origin | head -1 | awk '{print $2}')"
 
-git clone https://github.com/HeSYINUvSBZfxqA/tvdinner $tvd_name 
+git clone https://github.com/HeSYINUvSBZfxqA/tvdinner ../$tvd_name 
 
-cd $tvd_name
+cd ../$tvd_name
 gem/setup
 vi $tvd_name.gemspec
 git add *.gemspec
