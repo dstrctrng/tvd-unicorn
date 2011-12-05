@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+tvd_name=$1; shift
+
+bundle exec hub clone -p $tvd_name
+
+cd $tvd_name
+
+git remote add tvdinner "https://github.com/HeSYINUvSBZfxqA/tvdinner"
+git fetch tvdinner
+
