@@ -4,6 +4,7 @@ if [[ ! -f "features/Gemfile.lock" ]]; then
   cp "features/Gemfile.lock.template" "features/Gemfile.lock"
   cd features
   bundle update --local $(basename $(dirname $(pwd))) 
+  cd -
 fi
 
 cd features
