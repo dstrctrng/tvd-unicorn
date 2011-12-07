@@ -22,5 +22,5 @@ limitations under the License.
 TESTS
 =====
 
-    BUNDLE_GEMFILE=$(pwd)/features/Gemfile bundle exec cucumber feature_files...
+    gem/features features/*.feature
 
