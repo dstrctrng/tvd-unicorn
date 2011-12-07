@@ -8,4 +8,4 @@ cd ../$tvd_name
 
 git remote add tvdinner "https://github.com/HeSYINUvSBZfxqA/tvdinner"
 git fetch tvdinner
-
+exec bash -i -l
