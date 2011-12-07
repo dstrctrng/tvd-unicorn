@@ -2,7 +2,7 @@
 
 tvd_name=$1; shift
 
-hub clone -p $tvd_name ../$tvd_name
+hub clone -p $tvd_name ../$tvd_name --recursive
 
 cd ../$tvd_name
 
