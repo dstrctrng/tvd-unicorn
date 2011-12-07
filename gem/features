@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+BUNDLE_GEMFILE=$(pwd)/features/Gemfile bundle exec cucumber "$@"
