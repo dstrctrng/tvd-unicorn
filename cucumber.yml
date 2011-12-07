@@ -1,1 +1,1 @@
-features/cucumber.yml
+default: features -r oijangajji/steps -r oijangajji/support 

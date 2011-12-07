@@ -1,14 +1,14 @@
 #!/bin/bash -e
 
-if [[ ! -f "features/Gemfile.lock" ]]; then
-  cp "features/Gemfile.lock.template" "features/Gemfile.lock"
-  cd features
+if [[ ! -f "oijangajji/Gemfile.lock" ]]; then
+  cd oijangajji
+  cp Gemfile.lock.template Gemfile.lock
   bundle update --local $(basename $(dirname $(pwd))) 
   cd -
 fi
 
-cd features
+cd oijangajji
 bundle check || { bundle install --local && bundle check; }
 cd -
 
-BUNDLE_GEMFILE=$(pwd)/features/Gemfile bundle exec cucumber "$@"
+BUNDLE_GEMFILE=$(pwd)/oijangajji/Gemfile bundle exec cucumber "$@"
