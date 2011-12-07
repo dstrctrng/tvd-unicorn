@@ -22,5 +22,5 @@ limitations under the License.
 TESTS
 =====
 
-    gem/features features/*.feature
+    oijangajji/bin/features oijangajji/oijangajji.feature
 
