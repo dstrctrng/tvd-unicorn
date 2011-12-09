@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.platform = Gem::Platform::RUBY
 
   s.add_dependency "microwave"
+  s.add_dependency "boson"
 
   s.require_path = "cookbooks"
 
