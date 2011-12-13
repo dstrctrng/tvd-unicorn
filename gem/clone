@@ -8,4 +8,6 @@ cd ../$tvd_name
 
 git remote add tvdinner "https://github.com/HeSYINUvSBZfxqA/tvdinner"
 git fetch tvdinner
+git merge tvdinner/master
+git submodule update --init --recursive
 exec bash -i -l
