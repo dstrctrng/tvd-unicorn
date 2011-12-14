@@ -20,3 +20,6 @@ git push -u origin master
 git remote add tvdinner $tvd_origin
 git fetch tvdinner
 
+git merge tvdinner/master
+git submodule update --init --recursive
+exec bash -i -l
