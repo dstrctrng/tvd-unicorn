@@ -7,7 +7,7 @@ tvd_origin="$(git remote -v | grep ^origin | head -1 | awk '{print $2}')"
 git clone https://github.com/HeSYINUvSBZfxqA/tvdinner ../$tvd_name --recursive
 
 cd ../$tvd_name
-gem/setup
+tvd/setup
 vi $tvd_name.gemspec
 git add *.gemspec
 git commit -m "initial tvdinner: $tvd_name"
