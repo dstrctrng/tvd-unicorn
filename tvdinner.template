@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
   s.require_path = "cookbooks"
 
   s.files  = Dir.glob("cookbooks/**/*")
-  s.files += Dir.glob(".boson/commands/**/*")
   s.files +=  %w(LICENSE NOTICE README.mkd)
 end
 
