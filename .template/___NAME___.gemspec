@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.files       += s.executables.map {|f| File.join("bin", f) }
   s.files       +=  %w(LICENSE NOTICE VERSION README.mkd)
 
-  s.require_path = ["lib", "cookbooks"]
+  s.require_path = "lib"
 
   s.add_dependency "microwave"
 end
