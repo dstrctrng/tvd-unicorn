@@ -1,5 +1,7 @@
 require "___NAME___/version"
 
-module ___MNAME___
-  # Your code goes here...
+module TVDinner
+  module ___MNAME___
+    # Your code goes here...
+  end
 end

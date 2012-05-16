@@ -1,3 +1,5 @@
-module ___MNAME___
-  VERSION = File.read(File.dirname(__FILE__) + '/../../VERSION')
+module TVDinner
+  module ___MNAME___
+    VERSION = File.read(File.dirname(__FILE__) + '/../../VERSION')
+  end
 end
