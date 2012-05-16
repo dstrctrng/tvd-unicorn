@@ -18,7 +18,7 @@ function main {
   export tvd_module="$1"; shift
 
   local template
-  find template in $(find .template -type f); do
+  for template in $(find .template -type f); do
     expand_template "$template"
   done
 }
