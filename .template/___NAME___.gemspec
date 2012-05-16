@@ -4,7 +4,7 @@ require "___NAME___/version"
 
 Gem::Specification.new do |s|
   s.name        = "___NAME___"
-  s.version     = __MNAME__::VERSION
+  s.version     = ___MNAME___::VERSION
   s.authors     = "___AUTHOR___"
   s.emails      = "___EMAIL___"
   s.homepage    = "___HOMEPAGE___"
