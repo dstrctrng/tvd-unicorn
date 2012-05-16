@@ -1,5 +1,5 @@
-require "__NAME__/version"
+require "___NAME___/version"
 
-module __MNAME__
+module ___MNAME___
   # Your code goes here...
 end
