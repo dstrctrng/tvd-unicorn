@@ -5,8 +5,8 @@ require "___NAME___/version"
 Gem::Specification.new do |s|
   s.name        = "___NAME___"
   s.version     = TVDinner::___MNAME___::VERSION
-  s.authors     = "___AUTHOR___"
-  s.emails      = "___EMAIL___"
+  s.author      = "___AUTHOR___"
+  s.email       = "___EMAIL___"
   s.homepage    = "___HOMEPAGE___"
   s.summary     = "___SUMMARY___"
   s.description = s.summary
