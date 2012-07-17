@@ -1,0 +1,38 @@
+#!/bin/bash -e
+
+shift # get rid of unicorn argument
+
+export PATH="/data/zendesk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export UNICORN_PID=<%= File.join(node[:project_dir], node[:run_dir], "unicorn.pid") %>
+export HOME="<%= node[:home_dir] %>"
+
+case $1 in
+  start*)
+    unset LS_COLORS
+    unset BUNDLE_GEMFILE GEM_PATH GEM_HOME RUBYOPT
+
+    <%= node[:ruby_loader] %> <%= node[:app_ruby] %> bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
+    exec <%= node[:ruby_loader] %> <%= node[:app_ruby] %> bundle exec unicorn_rails -c <%= File.join(node[:project_dir], node[:app_dir], "config", "unicorn.rb") %> -E <%= node[:app_env] %> -D
+    ;;
+
+  stop*)
+    [[ -f $UNICORN_PID ]] && kill -TERM $(cat $UNICORN_PID)
+    ;;
+
+  reload*)
+    [[ -f $UNICORN_PID ]] && kill -HUP $(cat $UNICORN_PID)
+    ;;
+
+  deploy*)
+    [[ -f $UNICORN_PID ]] && kill -USR2 $(cat $UNICORN_PID)
+    ;;
+
+  logrotate*)
+    [[ -f $UNICORN_PID ]] && kill -USR1 $(cat $UNICORN_PID)
+    ;;
+
+  *)
+    echo 2>&1 "ERROR: unrecognized action : $1"
+    exit 1
+    ;;
+esac

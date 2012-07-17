@@ -1,0 +1,45 @@
+Unicorn::HttpServer::START_CTX[0] = "<%= File.join(node[:project_dir], node[:app_dir], "libexec", "unicorn_redeploy") %>"
+
+working_directory "<%= File.join(node[:project_dir], node[:app_dir]) %>"
+pid "<%= File.join(node[:project_dir], node[:run_dir], "unicorn.pid") %>"
+stderr_path "<%= File.join(node[:project_dir], node[:log_dir], "unicorn.stderr.log") %>"
+stdout_path "<%= File.join(node[:project_dir], node[:log_dir], "unicorn.stdout.log") %>"
+unicorn_logger = Logger.new("<%= File.join(node[:project_dir], node[:log_dir], "unicorn.log") %>")
+unicorn_logger.formatter = Logger::Formatter.new
+logger unicorn_logger
+
+listen <%= node[:unicorn_port] %>, :backlog => <%= node[:unicorn_backlog] %>
+timeout <%= node[:unicorn_timeout] %>
+
+preload_app true
+
+worker_processes <%= node[:unicorn_workers] %>
+max_worker_processes = <%= node[:unicorn_workers] %> # HACK figure out how to test for last worker
+
+stash_env = %w(PATH RUBYOPT).map { |x| [ x, ENV[x] ] }
+before_exec do |_|
+  stash_env.each { |(k,v)| ENV[k] = v }
+end
+
+after_fork do |server, worker|
+  # Make the AR connection if defined
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.clear_all_connections!
+  end
+
+  # first, check if new master was re-deployed
+  if ENV['UNICORN_FD']
+    # second, check if still in a re-deploy
+    old_pid = "#{server.config[:pid]}.oldbin"
+    if File.exists?(old_pid) && server.pid != old_pid
+      begin
+        # kill the old master if this is the last worker
+        if worker.nr >= (max_worker_processes - 1)
+          Process.kill(:QUIT, File.read(old_pid).to_i)
+        end
+      rescue Errno::ENOENT, Errno::ESRCH
+        # someone else did our job for us
+      end
+    end
+  end
+end
