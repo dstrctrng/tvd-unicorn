@@ -7,15 +7,19 @@
 #/     venv command args..
 
 # figure out the project root under which bin, lib live
-shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
 
-# load a meat library
-source "$shome/bin/_prime" "$@"
+# load a jason bourne library
+source "$shome/bin_treadstone"
 
 # entry point
 function main {
+  if [[ ! -d $shome/.doc/.virtualenv ]]; then
+    (cd $shome/.doc && tar xfz virtualenv-pygmentize.tgz)
+  fi
+
   export VIRTUAL_ENV_DISABLE_PROMPT=1
-  source $shome/.virtualenv/bin/activate
+  source $shome/.doc/.virtualenv/bin/activate
   exec "$@"
 }
 
