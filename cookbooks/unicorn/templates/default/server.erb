@@ -12,7 +12,7 @@ case $1 in
     unset BUNDLE_GEMFILE GEM_PATH GEM_HOME RUBYOPT
 
     <%= node[:ruby_loader] %> <%= node[:app_ruby] %> bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-    exec <%= node[:ruby_loader] %> <%= node[:app_ruby] %> bundle exec unicorn_rails -c <%= File.join(node[:project_dir], node[:app_dir], "config", "unicorn.rb") %> -E <%= node[:app_env] %> -D
+    exec <%= node[:ruby_loader] %> <%= node[:app_ruby] %> bundle exec <% node[:unicorn_exec] %> -c <%= File.join(node[:project_dir], node[:app_dir], "config", "unicorn.rb") %> -E <%= node[:app_env] %> -D
     ;;
 
   stop*)
