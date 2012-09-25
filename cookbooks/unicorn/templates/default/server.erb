@@ -5,7 +5,7 @@ shift # get rid of unicorn argument
 export PATH="/data/zendesk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export UNICORN_PID=<%= File.join(node[:project_dir], node[:run_dir], "unicorn.pid") %>
 export HOME="<%= node[:home_dir] %>"
-rhome="<%= node[:release_dir]/service/unicorn %>
+rhome="<%= node[:release_dir] %>/service/unicorn"
 
 case $1 in
   start*)
