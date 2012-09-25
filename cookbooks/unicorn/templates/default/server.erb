@@ -5,7 +5,6 @@ shift # get rid of unicorn argument
 export PATH="/data/zendesk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export UNICORN_PID=<%= File.join(node[:project_dir], node[:run_dir], "unicorn.pid") %>
 export HOME="<%= node[:home_dir] %>"
-shome="<%= node[:release_dir] %>"
 rhome="<%= node[:release_dir]/service/unicorn %>
 
 case $1 in
@@ -13,9 +12,8 @@ case $1 in
     unset LS_COLORS
     unset BUNDLE_GEMFILE GEM_PATH GEM_HOME RUBYOPT
 
-    cd $shome
-    <%= node[:ruby_loader] %> <%= node[:app_ruby] %> bundle check 2>&1 >/dev/null || { bundle install --quiet --local --path vendor/bundle || bundle check > /dev/null; }
-    exec chpst -e $rhome/env <%= node[:ruby_loader] %> <%= node[:app_ruby] %> "$shome/bin/local-helper" <%= node[:unicorn_exec] %> -c <%= File.join(node[:project_dir], node[:app_dir], "config", "unicorn.rb") %> -E <%= node[:app_env] %> -D
+    cd $rhome
+    exec ./run
     ;;
 
   stop*)
