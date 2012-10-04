@@ -4,7 +4,7 @@ working_directory "<%= File.join(node[:project_dir], node[:app_dir]) %>"
 pid "<%= File.join(node[:project_dir], node[:run_dir], "unicorn.pid") %>"
 stderr_path "<%= File.join(node[:project_dir], node[:log_dir], "unicorn.stderr.log") %>"
 stdout_path "<%= File.join(node[:project_dir], node[:log_dir], "unicorn.stdout.log") %>"
-unicorn_logger = Logger.new("<%= File.join(node[:project_dir], node[:log_dir], "unicorn.log") %>")
+unicorn_logger = Logger.new("<%= File.join(node[:project_dir], node[:log_dir], "unicorn.stderr.log") %>")
 unicorn_logger.formatter = Logger::Formatter.new
 logger unicorn_logger
 
