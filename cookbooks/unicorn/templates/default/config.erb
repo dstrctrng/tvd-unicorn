@@ -1,4 +1,4 @@
-Unicorn::HttpServer::START_CTX[0] = "<%= File.join(node[:project_dir], node[:app_dir], "libexec", "unicorn_redeploy") %>"
+Unicorn::HttpServer::START_CTX[0] = "<%= File.join(node[:project_dir], node[:app_dir], "libexec", "unicorn_#{node[:app_name]}") %>"
 
 working_directory "<%= File.join(node[:project_dir], node[:app_dir]) %>"
 pid "<%= File.join(node[:project_dir], node[:run_dir], "unicorn.pid") %>"

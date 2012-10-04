@@ -1,4 +1,0 @@
-#!/bin/bash -e
-
-cd "<%= File.join(node[:project_dir], node[:app_dir]) %>"
-exec sudo -u <%= node[:app_user] %> libexec/server unicorn start

@@ -16,17 +16,7 @@ template "#{node[:release_dir]}/libexec/server" do
   mode 0755
 end
 
-template "#{node[:release_dir]}/libexec/unicorn_redeploy" do
-  source "unicorn_redeploy.erb"
-  mode 0755
-end
-
-template "#{node[:release_dir]}/libexec/unicorn_root" do
-  source "unicorn_root.erb"
-  mode 0755
-end
-
-template "#{node[:release_dir]}/libexec/#{node[:app_name]}" do
-  source "init.erb"
+template "#{node[:release_dir]}/libexec/unicorn_#{node[:app_name]}" do
+  source "deploy.erb"
   mode 0755
 end
