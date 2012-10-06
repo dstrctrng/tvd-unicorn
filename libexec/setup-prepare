@@ -1,0 +1,58 @@
+#!/bin/bash
+
+#/ NAME
+#/     setup-prepare -- generates scaffolding for a tvdinner
+#/
+#/ SYNOPSIS
+#/     setup prepare <gem_name> <module_name>
+
+# figure out the project root under which bin, lib live
+shome="$(cd -P -- "$(dirname -- "$0")/.." && pwd -P)"
+
+# load a meat library
+source "$shome/bin/_treadstone" "$@"
+
+# entry point
+function main {
+  if [[ "$#" < 1 ]]; then
+    logger_fatal "missing tvdinner gem name"
+    exit 1
+  fi
+
+  if [[ "$#" < 2 ]]; then
+    logger_fatal "missing tvdinner module name"
+    exit 1
+  fi
+
+  export tvd_name="$1"; shift
+  export tvd_module="$1"; shift
+
+  local template
+  for template in $(find .template -type f); do
+    expand_template "$template"
+  done
+}
+
+function expand_template {
+  local template="$1"; shift
+
+  export user_name="$(git config user.name)"
+  export user_email="$(git config user.email)"
+  export github_user="$(git config github.user)"
+
+  tmp_template="$(mktemp -t XXXXXXXXX)"
+  # ghetto
+  rsync -ia "$template" "$tmp_template"
+  perl -pe 's{___NAME___}    { $ENV{"tvd_name"} }e' -i $tmp_template
+  perl -pe 's{___MNAME___}   { $ENV{"tvd_module"} }e' -i $tmp_template
+  perl -pe 's{___SUMMARY___} { "tvdinner: $ENV{'tvd_name'}" }e' -i $tmp_template
+  perl -pe 's{___AUTHOR___}  { $ENV{"user_name"} }e' -i $tmp_template
+  perl -pe 's{___EMAIL___}   { $ENV{"user_email"} }e' -i $tmp_template
+  perl -pe 's{___HOMEPAGE___}{ "https://github.com/$ENV{'github_user'}/$ENV{'tvd_name'}" }e' -i $tmp_template
+
+  pth_expanded="$(echo "${template#*/}" | perl -pe 's{___NAME___}{ $ENV{"tvd_name"} }e; s{___MNAME___}{ $ENV{"tvd_module"}}e')"
+  mkdir -p "$(dirname "$pth_expanded")"
+  mv "$tmp_template" "$pth_expanded"
+}
+
+require sub "$BASH_SOURCE" "$@"
