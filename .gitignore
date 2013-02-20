@@ -3,5 +3,7 @@
 /.bundle/
 /vendor/bundle/
 /*.gem
-/tmp/site
 *.orig
+/tmp
+/crash.log
+/output
