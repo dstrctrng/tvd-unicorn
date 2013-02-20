@@ -1,5 +1,5 @@
 ---
 remotes:
   primary: git@github.com:destructuring/tvd-unicorn
-  secondary: git@destructuring.org:destructuring/tvd-unicorn
+  secondary: git@bitbucket.org:destructuring/tvd-unicorn
   tvd: https://github.com/destructuring/tvdinner
