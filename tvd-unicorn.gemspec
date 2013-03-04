@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_path = "lib"
 
   s.add_dependency "tvd-runit"
+  s.add_dependency "unicorn"
 
   s.author      = "Tom Bombadil"
   s.email       = "amanibhavam@destructuring.org"
