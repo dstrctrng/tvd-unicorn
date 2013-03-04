@@ -1,9 +1,7 @@
-/tvd-*/
-/pub/
 /.bundle/
 /vendor/bundle/
 /*.gem
-*.orig
-/tmp
 /crash.log
 /output
+*.orig
+/tmp

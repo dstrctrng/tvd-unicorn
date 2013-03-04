@@ -1,0 +1,6 @@
+/chef/cache
+/chef/backup
+/log
+/run
+/cache
+/service

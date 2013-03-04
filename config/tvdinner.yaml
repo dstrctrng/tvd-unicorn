@@ -1,0 +1,12 @@
+--- 
+run_list: 
+- tvdinner
+tvd: 
+  class: Unicorn
+  name: unicorn
+  author: Tom Bombadil
+  email: amanibhavam@destructuring.org
+  summary: Unicorn under runit
+  description: Unicorn under runit
+  homepage: http://destructuring.org/tvd-unicorn
+  git_url: https://github.com/destructuring/tvd-unicorn
