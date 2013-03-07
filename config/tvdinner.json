@@ -1,0 +1,15 @@
+{
+  "run_list": [
+    "tvdinner"
+  ],
+  "tvd": {
+    "author": "Tom Bombadil",
+    "class": "Unicorn",
+    "description": "Unicorn under runit",
+    "email": "amanibhavam@destructuring.org",
+    "git_url": "https://github.com/destructuring/tvd-unicorn",
+    "homepage": "http://destructuring.org/tvd-unicorn",
+    "name": "unicorn",
+    "summary": "Unicorn under runit"
+  }
+}

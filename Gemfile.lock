@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    tvd-unicorn (0.0.14)
+    tvd-unicorn (0.0.16)
+      tvd-runit
       unicorn
 
 GEM
@@ -61,7 +62,7 @@ GEM
     mixlib-config (1.1.2)
     mixlib-log (1.4.1)
     mixlib-shellout (1.1.0)
-    net-ssh (2.6.5)
+    net-ssh (2.6.6)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     net-ssh-multi (1.1)
@@ -99,7 +100,9 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tvd-tvdinner (0.0.12)
+    tvd-runit (0.0.21)
+      tvd-tvdinner
+    tvd-tvdinner (0.0.18)
       chef
     unicorn (4.6.2)
       kgio (~> 2.6)
